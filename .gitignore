@@ -1,0 +1,13 @@
+dist/
+target/
+.idea/
+.settings/
+.project
+*.iml
+.classpath
+logs/
+
+statistics/
+statisticsdir_IS_UNDEFINED/
+
+.scannerwork
