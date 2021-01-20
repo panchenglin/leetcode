@@ -11,20 +11,20 @@ import java.util.Queue;
  * @date 2021/1/12
  **/
 public class LevelOrderTree {
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public List<List<Integer>> levelOrder1(Node root) {
         List<List<Integer>> ret = new ArrayList<List<Integer>>();
         if (root == null) {
             return ret;
         }
 
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        Queue<Node> queue = new LinkedList<Node>();
         queue.offer(root);
         while (!queue.isEmpty()) {
             List<Integer> level = new ArrayList<Integer>();
             int currentLevelSize = queue.size();
             for (int i = 1; i <= currentLevelSize; ++i) {
-                TreeNode node = queue.poll();
-                level.add(node.val);
+                Node node = queue.poll();
+                level.add(node.value);
                 if (node.left != null) {
                     queue.offer(node.left);
                 }
@@ -38,7 +38,7 @@ public class LevelOrderTree {
         return ret;
     }
 
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public List<List<Integer>> levelOrder2(Node root) {
         //按层遍历即可
         //1.
         List<List<Integer>> lists = new ArrayList<>();
@@ -46,14 +46,14 @@ public class LevelOrderTree {
             return lists;
         }
         //2.
-        List<TreeNode> nodes = new ArrayList<>();
+        List<Node> nodes = new ArrayList<>();
         nodes.add(root);
         while (!nodes.isEmpty()) {
             int size = nodes.size();
             List<Integer> list = new ArrayList<>();
             for (int i = 0; i < size; i++) {
-                TreeNode remove = nodes.remove(0);
-                list.add(remove.val);
+                Node remove = nodes.remove(0);
+                list.add(remove.value);
                 if (remove.left != null) {
                     nodes.add(remove.left);
                 }
@@ -64,5 +64,17 @@ public class LevelOrderTree {
             lists.add(list);
         }
         return lists;
+    }
+
+    class Node {
+        Integer value;//本节点的值
+        Node left;//左边的子节点
+        Node right;//右边的子节点
+
+        Node(int value) {
+            this.value = value;
+            right = null;
+            left = null;
+        }
     }
 }
