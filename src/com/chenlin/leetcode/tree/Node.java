@@ -1,7 +1,7 @@
 package com.chenlin.leetcode.tree;
 
 /**
- * @author bjpanhongwei
+ * @author chengln
  * @date 2021/4/13
  **/
 public class Node {
