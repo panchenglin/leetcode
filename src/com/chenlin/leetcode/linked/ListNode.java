@@ -1,7 +1,7 @@
 package com.chenlin.leetcode.linked;
 
 /**
- * @author bjpanhongwei
+ * @author chenglin
  * @date 2021/2/4
  **/
 public class ListNode {
