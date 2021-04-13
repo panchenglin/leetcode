@@ -6,10 +6,15 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * @author bjpanhongwei
+ * 102. 二叉树的层序遍历
+ * https://leetcode-cn.com/problems/binary-tree-level-order-traversal/solution/er-cha-shu-de-ceng-xu-bian-li-by-leetcode-solution/
+ * @author chenglin
  * @date 2021/1/12
  **/
 public class LevelOrderTree {
+    /**
+     * 使用使用队列
+     */
     public List<List<Integer>> levelOrder1(Node root) {
         List<List<Integer>> ret = new ArrayList<List<Integer>>();
         if (root == null) {
@@ -37,14 +42,15 @@ public class LevelOrderTree {
         return ret;
     }
 
+    /**
+     * 临时集合保存
+     */
     public List<List<Integer>> levelOrder2(Node root) {
         //按层遍历即可
-        //1.
         List<List<Integer>> lists = new ArrayList<>();
         if (root == null) {
             return lists;
         }
-        //2.
         List<Node> nodes = new ArrayList<>();
         nodes.add(root);
         while (!nodes.isEmpty()) {
@@ -65,15 +71,4 @@ public class LevelOrderTree {
         return lists;
     }
 
-    class Node {
-        Integer value;//本节点的值
-        Node left;//左边的子节点
-        Node right;//右边的子节点
-
-        Node(int value) {
-            this.value = value;
-            right = null;
-            left = null;
-        }
-    }
 }

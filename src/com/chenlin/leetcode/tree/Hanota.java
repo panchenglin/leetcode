@@ -1,6 +1,6 @@
 package com.chenlin.leetcode.tree;
 
-import com.chenlin.leetcode.linked.ListNode;
+import com.google.common.collect.Lists;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * @author bjpanhongwei
  * @date 2021/3/9
  **/
-class Solution {
+class Hanota {
     /**
      * 将 A 上的所有盘子，借助 B，移动到C 上
      * @param A 原柱子
@@ -22,22 +22,26 @@ class Solution {
     }
 
     private void movePlate(int num, List<Integer> original, List<Integer> auxiliary, List<Integer> target) {
-        if (num == 1) {    // 只剩一个盘子时，直接移动即可
+        // 只剩一个盘子时，直接移动即可
+        if (num == 1) {
             target.add(original.remove(original.size() - 1));
             return;
         }
-
-        movePlate(num - 1, original, target, auxiliary);   // 将 size-1 个盘子，从 original 移动到 auxiliary
-        target.add(original.remove(original.size() - 1));   // 将 第size个盘子，从 original 移动到 target
-        movePlate(num - 1, auxiliary, original, target);   // 将 size-1 个盘子，从 auxiliary 移动到 target
+        // 将 size-1 个盘子，从 original 移动到 auxiliary
+        movePlate(num - 1, original, target, auxiliary);
+        // 将 第size个盘子，从 original 移动到 target
+        target.add(original.remove(original.size() - 1));
+        // 将 size-1 个盘子，从 auxiliary 移动到 target
+        movePlate(num - 1, auxiliary, original, target);
     }
 
-    public void hanota1(List<Integer> A, List<Integer> B, List<Integer> C) {
+    private static void hanota1(List<Integer> A, List<Integer> B, List<Integer> C) {
         //得到盘子总数
         int n =A.size();
         func(n,A,B,C);
     }
-    public void func(int n,List<Integer> A, List<Integer> B, List<Integer> C){
+
+    private static void func(int n,List<Integer> A, List<Integer> B, List<Integer> C){
         //当盘子都移动空了之后停止递归
         if(n<=0){
             return;
@@ -50,17 +54,14 @@ class Solution {
         func(n-1,B,A,C);
     }
 
-    public ListNode deleteDuplicates(ListNode head) {
-        ListNode current = head;
-        while (current != null && current.next != null) {
-            if (current.next.val == current.val) {
-                current.next = current.next.next;
-            } else {
-                current = current.next;
-            }
-        }
-        return head;
-    }
 
+
+    public static void main(String[] args) {
+        List<Integer> A = Lists.newArrayList(3,2,1,0);
+        List<Integer> B = Lists.newArrayList();
+        List<Integer> C = Lists.newArrayList();
+        hanota1(A,B,C);
+        System.out.println(C);
+    }
 }
 
