@@ -4,7 +4,7 @@ package com.chenlin.leetcode.tree;
  * @author chengln
  * @date 2021/4/13
  **/
-public class Node {
+public class TreeNode {
     /**
      * 本节点的值
      */
@@ -12,13 +12,13 @@ public class Node {
     /**
      * 左边的子节点
      */
-    Node left;
+    TreeNode left;
     /**
      * 右边的子节点
      */
-    Node right;
+    TreeNode right;
 
-    Node(int value) {
+    TreeNode(int value) {
         this.value = value;
         right = null;
         left = null;

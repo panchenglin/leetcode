@@ -15,25 +15,25 @@ public class LevelOrderTree {
     /**
      * 使用使用队列
      */
-    public List<List<Integer>> levelOrder1(Node root) {
+    public List<List<Integer>> levelOrder1(TreeNode root) {
         List<List<Integer>> ret = new ArrayList<List<Integer>>();
         if (root == null) {
             return ret;
         }
 
-        Queue<Node> queue = new LinkedList<Node>();
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.offer(root);
         while (!queue.isEmpty()) {
             List<Integer> level = new ArrayList<Integer>();
             int currentLevelSize = queue.size();
             for (int i = 1; i <= currentLevelSize; ++i) {
-                Node node = queue.poll();
-                level.add(node.value);
-                if (node.left != null) {
-                    queue.offer(node.left);
+                TreeNode treeNode = queue.poll();
+                level.add(treeNode.value);
+                if (treeNode.left != null) {
+                    queue.offer(treeNode.left);
                 }
-                if (node.right != null) {
-                    queue.offer(node.right);
+                if (treeNode.right != null) {
+                    queue.offer(treeNode.right);
                 }
             }
             ret.add(level);
@@ -45,25 +45,25 @@ public class LevelOrderTree {
     /**
      * 临时集合保存
      */
-    public List<List<Integer>> levelOrder2(Node root) {
+    public List<List<Integer>> levelOrder2(TreeNode root) {
         //按层遍历即可
         List<List<Integer>> lists = new ArrayList<>();
         if (root == null) {
             return lists;
         }
-        List<Node> nodes = new ArrayList<>();
-        nodes.add(root);
-        while (!nodes.isEmpty()) {
-            int size = nodes.size();
+        List<TreeNode> treeNodes = new ArrayList<>();
+        treeNodes.add(root);
+        while (!treeNodes.isEmpty()) {
+            int size = treeNodes.size();
             List<Integer> list = new ArrayList<>();
             for (int i = 0; i < size; i++) {
-                Node remove = nodes.remove(0);
+                TreeNode remove = treeNodes.remove(0);
                 list.add(remove.value);
                 if (remove.left != null) {
-                    nodes.add(remove.left);
+                    treeNodes.add(remove.left);
                 }
                 if (remove.right != null) {
-                    nodes.add(remove.right);
+                    treeNodes.add(remove.right);
                 }
             }
             lists.add(list);
